@@ -16,12 +16,12 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
 
     @Override
-    public List<Project> getAllProjects(){
+    public List<Project> getAllProjects() {
         return projectRepository.findAll();
     }
 
     @Override
-    public Project createProject(Project project){
+    public Project createProject(Project project) {
         return projectRepository.save(project);
     }
 
@@ -32,19 +32,19 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project updateProject(Long id, Project projectDetails){
+    public Project updateProject(Long id, Project projectDetails) {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found"));
-                project.setName(projectDetails.getName());
-                project.setDescription(projectDetails.getDescription());
-                return projectRepository.save(project);
+        project.setName(projectDetails.getName());
+        project.setDescription(projectDetails.getDescription());
+        return projectRepository.save(project);
     }
 
     @Override
-    public Project deleteProject(Long id){
+    public Project deleteProject(Long id) {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Project not found"));
-                projectRepository.delete(project);
-                return project;
+        projectRepository.delete(project);
+        return project;
     }
 }
