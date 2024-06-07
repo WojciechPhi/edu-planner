@@ -11,40 +11,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     @Override
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public User createUser(@RequestBody User user){
+    public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
     @Override
-    public User getUserById(@PathVariable Long id){
+    public User getUserById(@PathVariable Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     @Override
-    public User updateUser(@PathVariable Long id, @RequestBody User userDetails){
+    public User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         user.setUsername(userDetails.getUsername());
         user.setPassword(userDetails.getPassword());
-        user.setRole(userDetails.getRole());
+        user.setRoles(userDetails.getRoles());
         return userRepository.save(user);
     }
 
     @Override
-    public User deleteUser(@PathVariable Long id){
+    public User deleteUser(@PathVariable Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         userRepository.delete(user);

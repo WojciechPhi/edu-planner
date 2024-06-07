@@ -1,21 +1,23 @@
 package com.edu.edu_planner.model;
 
-import jakarta.persistence.*;
-import org.springframework.scheduling.config.Task;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
 
-import java.util.List;
-
+@Data
 @Entity
 public class Project {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String description;
 
-   //@OneToMany(mappedBy = "project")
-   // private List<Task> tasks;
+    //@OneToMany(mappedBy = "project")
+    // private List<Task> tasks;
 
     public Long getId() {
         return id;
@@ -41,11 +43,11 @@ public class Project {
         this.description = description;
     }
 
-  //  public List<Task> getTasks() {
-  //      return tasks;
-  //  }
+    //  public List<Task> getTasks() {
+    //      return tasks;
+    //  }
 
-   // public void setTasks(List<Task> tasks) {
-   //     this.tasks = tasks;
-   // }
+    // public void setTasks(List<Task> tasks) {
+    //     this.tasks = tasks;
+    // }
 }

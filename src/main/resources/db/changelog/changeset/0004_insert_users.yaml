@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: admin
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: "user"
+              - column:
+                  name: password
+                  value: "{bcrypt}$2a$10$EblZqNptyz7kL5cM.DIdealP91TTdKHJdlDP8l7T3E.MI7fBoJL3e" # BCrypt encoded password for "password"
+              - column:
+                  name: roles
+                  value: "USER"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: "admin"
+              - column:
+                  name: password
+                  value: "{bcrypt}$2a$10$EblZqNptyz7kL5cM.DIdealP91TTdKHJdlDP8l7T3E.MI7fBoJL3e" # BCrypt encoded password for "admin"
+              - column:
+                  name: roles
+                  value: "USER,ADMIN"

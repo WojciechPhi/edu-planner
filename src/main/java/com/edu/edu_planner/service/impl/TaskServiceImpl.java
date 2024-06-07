@@ -16,23 +16,23 @@ public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
 
     @Override
-    public List<Task> getAllTasks(){
+    public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
     @Override
-    public Task createTask(Task task){
+    public Task createTask(Task task) {
         return taskRepository.save(task);
     }
 
     @Override
-    public Task getTaskById(Long id){
+    public Task getTaskById(Long id) {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found"));
     }
 
     @Override
-    public Task updateTask(Long id, Task taskDetails){
+    public Task updateTask(Long id, Task taskDetails) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found"));
         task.setName(taskDetails.getName());
@@ -41,7 +41,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task deleteTask(Long id){
+    public Task deleteTask(Long id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Task not found"));
         taskRepository.delete(task);
